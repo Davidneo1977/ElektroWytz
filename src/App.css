@@ -1,0 +1,43 @@
+
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+
+  .main-content {
+    flex: 1;
+    background-color: #1f1e1e; 
+  }
+
+
+  .header {
+    background-color: #b48f16;
+    position: relative;
+    text-align: center;
+    color: rgb(185, 19, 19);
+    padding: 5rem;
+  }
+  
+  .header-title {
+    
+    position: absolute;
+    top: 35%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+  }
+  
+
+
+
+.footer {
+        background-color: #0e0c0c;
+        color: #fff;
+        text-align: right;
+        padding: 1rem;
+        position: relative;
+      }
+      
+  
