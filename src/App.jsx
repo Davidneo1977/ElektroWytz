@@ -1,21 +1,30 @@
-//import { useState } from 'react'
+
+import { useState } from 'react'
+import Header from './components/header';
+import Footer from './components/footer';
+import Sidebar from './components/sidebar';
+import PriceList from './components/pricelist';
+import ChatBox from './components/chatbox';
 import './App.css'
-import Header from './components/Header';
-import Footer from './components/Footer';
+
+
 
 function App() {
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   return (
     <div className="app">
-    <Header />
-    <main className="main-content">
-
-      {/* komponenty a obsah stránky */}
-
-    </main>
-    <Footer />
-  </div>
-  )
+      <Header />
+      <div className="content">
+       <Sidebar onSelectCategory={setSelectedCategory} />
+       <PriceList category={selectedCategory} />
+       </div>
+       <ChatBox />
+       <Footer />
+      
+     
+      
+    </div>
+  );
 }
-
 export default App
