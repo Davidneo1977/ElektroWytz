@@ -18,8 +18,8 @@ function App() {
       <div className="content">
        <Sidebar onSelectCategory={setSelectedCategory} />
        <PriceList category={selectedCategory} />
-       </div>
        <ChatBox />
+       </div>
        <Footer />
       
      

@@ -1,7 +1,7 @@
 
 
 import React, { useState } from 'react';
-//import './ChatBox.scss';
+import './ChatBox.scss';
 
 const ChatBox = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -54,7 +54,7 @@ const ChatBox = () => {
                         <button onClick={handleSendMessage}>Odeslat</button>
                     </div>
                     <div className="chat-footer">
-                        <span>Powered by Your Company</span>
+                        <span>Powered by ElektroWytz</span>
                     </div>
                 </div>
             )}
