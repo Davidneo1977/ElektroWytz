@@ -1,76 +1,56 @@
-import React, { useState, useEffect } from 'react';
+// Pricelist.js
+import React, { useState } from 'react';
+import PricelistItem from './pricelistitem';
+import './Pricelist.scss';
 
+const Pricelist = () => {
+  const items = [
+    { id: 1, title: 'Sekání drážky v ytongu (do šíře 30mm,  do hl.30mm)', pricePerMeter: 56 },
+    { id: 2, title: 'Sekání drážky v ytongu (do šíře 50mm,  do hl.40mm)', pricePerMeter: 69 },
+    { id: 3, title: 'Sekání drážky v ytongu (do šíře 100mm, do hl.40mm)', pricePerMeter: 100 },
+    { id: 4, title: 'Tahání přívodních kabeků nízkeho napětí NP 230/400', pricePerMeter: 131 },
+    { id: 5, title: 'Tahání slaboproudých kabelů internetu/MaR/TV/PO/Z', pricePerMeter: 80 },
+    { id: 6, title: 'Zapojení a odzkoušení zásuvkového obvodu 230/400V ', pricePerMeter: 95 },
+    { id: 7, title: 'Zapojení a odzkoušení světelného obvodu 230V/24V', pricePerMeter: 110 },
+    { id: 8, title: 'Kompletace bytové a nebytové eletroinstalace 230V', pricePerMeter: 120 },
+    { id: 9, title: 'Revize bytové a nebytové elektroinstalace 230/400V', pricePerMeter: 150 },
+    { id: 10, title: 'Revize bytových a hlavních F rozváděčů 230V/400V', pricePerMeter: 180 },
+  ];
 
-const priceListItems = [
-  { id: 1, name: 'Instalace zásuvky ks', price: 60 },
-  { id: 2, name: 'Instalace vypínače ks', price: 55 },
-  { id: 3, name: 'Instalace světla ks', price: 70 },
-  { id: 4, name: 'Instalace rozváděče', price: 300 },
-  { id: 5, name: 'Revize rozváděče', price: 400 },
-  { id: 6, name: 'Zapojení velkého rozváděče', price: 4200 },
-  { id: 7, name: 'Zapojení BR 36 modulů', price: 2500 },
-  { id: 8, name: 'Drážkování do Ytongu 1/bm', price: 100 },
-  { id: 9, name: 'Drážkování do cihly 1/bm', price: 120 },
-  { id: 10, name: 'Drážkování do betonu 1/bm', price: 150 },
+  const [quantities, setQuantities] = useState(Array(items.length).fill(0));
+
+  const handleQuantityChange = (index, newQuantity) => {
+    const updatedQuantities = [...quantities];
+    updatedQuantities[index] = newQuantity;
+    setQuantities(updatedQuantities);
+  };
+
+  const handleReset = () => {
+    setQuantities(Array(items.length).fill(0));  
+  };
+
+  const totalPrice = quantities.reduce((total, qty, index) => total + qty * items[index].pricePerMeter, 0);
   
-  
-];
-
-function PriceList() {
-  const [quantities, setQuantities] = useState({});
-  const [totalPrice, setTotalPrice] = useState(0);
-
-  // přidání položky
-  const increaseQuantity = (id) => {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [id]: (prevQuantities[id] || 0) + 1,
-    }));
-  };
-
-  // odebrání položky
-  const decreaseQuantity = (id) => {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [id]: Math.max((prevQuantities[id] || 0) - 1, 0),
-    }));
-  };
-
-  // Výpočet celkové ceny
-  useEffect(() => {
-    const total = priceListItems.reduce((sum, item) => {
-      return sum + (quantities[item.id] || 0) * item.price;
-    }, 0);
-    setTotalPrice(total);
-  }, [quantities]);
-
-  // Funkce pro resetování 
-  const resetAll = () => {
-    setQuantities({});
-    setTotalPrice(0);
-  };
 
   return (
-    <div className="price-list">
-      <h3>Ceník elektro praci</h3>
-      {priceListItems.map((item) => (
-        <div key={item.id} className="price-item">
-          <span>{item.name}</span>
-          <span>{item.price} Kč</span>
-          <div className="controls">
-            <button onClick={() => decreaseQuantity(item.id)}>-</button>
-            <span>{quantities[item.id] || 0}</span>
-            <button onClick={() => increaseQuantity(item.id)}>+</button>
-          </div>
-        </div>
-      ))}
-      <div className="total-price">
-        <h4>Elektro práce celkem: {totalPrice} Kč</h4>
+    <div className="pricelist">
+      {items.map((item, index) => (
+        <PricelistItem
+          key={item.id}
+          title={item.title}
+          pricePerMeter={item.pricePerMeter}
+          quantity={quantities[index]}
+          onQuantityChange={(newQuantity) => handleQuantityChange(index, newQuantity)}
+          />
+          ))}
+          
+      <div className="total">
+        <p>Cena  celkem: {totalPrice} Kč</p>
+        <button onClick={handleReset}>VYMAZAT</button>
       </div>
-      <button className="reset-button" onClick={resetAll}>Resetovat</button>
+      
     </div>
   );
-}
+};
 
-export default PriceList;
-
+export default Pricelist;

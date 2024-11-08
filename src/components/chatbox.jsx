@@ -1,5 +1,4 @@
-
-
+// ChatBox.jsx
 import React, { useState } from 'react';
 import './ChatBox.scss';
 
@@ -16,6 +15,7 @@ const ChatBox = () => {
         if (input.trim()) {
             setMessages([...messages, { text: input, user: 'user' }]);
             setInput('');
+            // Simulace odpovědi
             setTimeout(() => {
                 setMessages((prevMessages) => [
                     ...prevMessages,
@@ -28,13 +28,13 @@ const ChatBox = () => {
     return (
         <div className={`chat-container ${isOpen ? 'open' : ''}`}>
             <button className="chat-toggle" onClick={toggleChat}>
-                {isOpen ? '✖' : '💬 Chat'}
+                {isOpen ? '✖' : '💬 Napište nám'}
             </button>
             {isOpen && (
                 <div className="chat-box">
                     <div className="chat-header">
-                        <span className="chat-title">Napište mi zprávu</span>
-                        <span className="chat-status">Odpovím jakmile budu online</span>
+                        <span className="chat-title">Napište nám zprávu</span>
+                        <span className="chat-status">Odpovíme jakmile budeme online</span>
                     </div>
                     <div className="chat-messages">
                         {messages.map((msg, index) => (
@@ -54,7 +54,7 @@ const ChatBox = () => {
                         <button onClick={handleSendMessage}>Odeslat</button>
                     </div>
                     <div className="chat-footer">
-                        <span>Powered by ElektroWytz</span>
+                        <span>Powered by ELEKTROWYTZ</span>
                     </div>
                 </div>
             )}
@@ -63,4 +63,5 @@ const ChatBox = () => {
 };
 
 export default ChatBox;
+
 
