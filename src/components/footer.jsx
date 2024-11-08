@@ -1,4 +1,5 @@
 import React from 'react';
+import './Footer.scss';
 //import './Footer.css';
 
 function Footer() {
@@ -14,7 +15,9 @@ function Footer() {
       </div>
       
       <div className="footer-copyright">
+
         © 2024 ElektroWytz
+
       </div>
     </footer>
   );
