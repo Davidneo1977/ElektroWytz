@@ -1,0 +1,38 @@
+
+.header {
+    
+    background: linear-gradient(135deg, #c90909, #e2aa0f);
+    color: #ffffff;
+    padding: 50px;
+    text-align: center;
+  
+    &__content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+    }
+
+  
+   
+  
+    &__title {
+      font-size: 1rem;
+      font-weight: bold;
+      
+    }
+  
+    // Response
+    @media (max-width: 768px) {
+      padding: 10px;
+  
+      &__logo {
+        width: 40px;
+      }
+  
+      &__title {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  
