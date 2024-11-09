@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import './chatBox.scss';
+import './chatbox.scss';
 
 const ChatBox = () => {
     const [isOpen, setIsOpen] = useState(false);
