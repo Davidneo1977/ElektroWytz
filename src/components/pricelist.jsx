@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import PricelistItem from './pricelistitem';
-import './Pricelist.scss';
+import './pricelist.scss';
 
 const Pricelist = () => {
   const items = [
