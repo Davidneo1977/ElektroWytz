@@ -1,4 +1,4 @@
-// PricelistItem.js
+
 import React from 'react';
 
 const PricelistItem = ({ title, pricePerMeter, quantity, onQuantityChange }) => {

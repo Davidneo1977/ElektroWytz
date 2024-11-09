@@ -1,4 +1,4 @@
-// ChatBox.jsx
+
 import React, { useState } from 'react';
 import './ChatBox.scss';
 
@@ -15,7 +15,6 @@ const ChatBox = () => {
         if (input.trim()) {
             setMessages([...messages, { text: input, user: 'user' }]);
             setInput('');
-            // Simulace odpovědi
             setTimeout(() => {
                 setMessages((prevMessages) => [
                     ...prevMessages,
