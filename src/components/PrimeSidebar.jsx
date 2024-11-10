@@ -19,7 +19,7 @@ const PrimeSidebar = () => {
           <li>Drážkování</li>
           <li>Tahání kabelů</li>
           <li>Zapojení zásuvek</li>
-          <li>Zapojení</li>
+          <li>Zapojení světel</li>
           <li>Kompletace</li>
           <li>Revize</li>
         </ul>
